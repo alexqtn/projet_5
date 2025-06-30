@@ -113,3 +113,39 @@ Secure and scalable MongoDB setup
 Structured Python scripts for ETL
 Clean and reproducible data pipeline
 Proper use of version control and documentation
+
+
+Terminal – Commandes pour exécuter le projet
+# GIT – Initialisation et gestion du dépôt
+git init                                 # Initialise un dépôt Git local
+git remote add origin <URL>              # Lie un dépôt distant (à faire une fois)
+git remote -v                            # Vérifie les URL du dépôt distant
+git add .                                # Ajoute tous les fichiers au commit
+git commit -m "Initial commit"           # Valide les changements avec un message
+git push -u origin main                  # Envoie le projet vers la branche principale de GitHub
+
+# DOCKER – Gestion des conteneurs
+docker-compose up --build                # Construit et lance les conteneurs (MongoDB + scripts)
+docker-compose down                      # Arrête et supprime les conteneurs (volumes conservés)
+docker ps                                # Liste les conteneurs Docker en cours d'exécution
+docker exec -it mongo bash               # Accède à un terminal bash dans le conteneur MongoDB
+docker exec -it mongo mongosh            # Accède à la shell MongoDB sans authentification (si ouverte)
+docker exec -it mongo mongosh -u admin_user -p admin123 --authenticationDatabase admin     # Connexion MongoDB avec identifiants
+docker logs <container_id>               # Affiche les logs d'un conteneur spécifique
+
+# MONGODB – Opérations courantes
+show dbs                                 # Affiche les bases disponibles (auth requis)
+use healthcare_db                        # Bascule vers la base souhaitée
+show collections                         # Affiche les collections de la base courante
+db.patients.find().pretty()              # Affiche les documents de la collection patients de manière lisible
+db.patients.countDocuments()             # Compte les documents dans la collection
+db.patients.createIndex({ _id: 1 }, { unique: true })   # Ajoute une contrainte d’unicité sur l'identifiant
+exit                                     # Quitte la shell MongoDB
+
+# SCRIPTS PYTHON – Migration et tests
+docker exec -it mongo_migration_container python scripts/migration.py          # Lance manuellement la migration des données
+docker exec -it mongo_migration_container python scripts/test_connection.py    # Teste la connexion MongoDB depuis le script
+
+# AUTRES – Vérifications
+cat logs/migration.log                    # Affiche les logs de la migration
+cat .env                                  # Vérifie les URI et identifiants définis
