@@ -1,0 +1,48 @@
+# Define the services (containers) that make up the application
+services:
+
+  # --- Service 1: MongoDB database ---
+  mongo:
+    image: mongo:6.0                       # Use official MongoDB 6 image
+    container_name: mongo                 # Name the container "mongo" for easy reference
+    restart: unless-stopped               # Automatically restart the container unless manually stopped
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin_user    # Root username required for Mongo init
+      MONGO_INITDB_ROOT_PASSWORD: admin123      # Root password (change this in production)
+
+    ports:
+      - "27017:27017"                     # Map local port 27017 to container port 27017
+
+    volumes:
+      - mongodb_data:/data/db            # Persist MongoDB data between restarts using a named volume
+      - ./mongodb/mongo_init.js:/docker-entrypoint-initdb.d/mongo_init.js:ro
+      # Mount your initialization script into Mongo's special folder
+      # It will run automatically at first launch and never again
+      # ":ro" means "read-only" to prevent accidental modification
+
+  # --- Service 2: Python migration container ---
+  migration:
+    build:
+      context: .                         # Use the current project directory as the build context
+      dockerfile: docker/Dockerfile     # Specify which Dockerfile to use
+
+    container_name: migration           # Name the container "migration"
+
+    depends_on:
+      - mongo                           # This container should wait for "mongo" to start (but not necessarily be ready)
+    
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/     # This URI will be used inside the Python script
+
+    volumes:
+      - ./data:/app/data                     # Mount the dataset folder so the script can access the CSV
+      - ./scripts:/app/scripts               # Mount the Python scripts
+      - ./logs:/app/logs                     # Mount logs folder for persistent logging
+      - ./requirements.txt:/app/requirements.txt   # Mount the Python dependency file
+      - .env:/app/.env                       # Mount the .env file for environment variables
+
+# --- Define volumes for persistent data storage ---
+volumes:
+  mongodb_data:       # This volume stores MongoDB data persistently on the host machine
+    

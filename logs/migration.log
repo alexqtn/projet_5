@@ -1,0 +1,232 @@
+2025-06-26 15:23:55,145 - INFO - Successfully loaded the CSV file: /Users/alexandre/Documents/Learning/cours_2025/OC/Projet_5/scripts/../data/healthcare_dataset.csv
+2025-06-26 15:23:55,151 - INFO - DataFrame preview:
+            Name  Age  Gender Blood Type Medical Condition Date of Admission            Doctor  ... Insurance Provider Billing Amount  Room Number  Admission Type Discharge Date   Medication  Test Results
+0  Bobby JacksOn   30    Male         B-            Cancer        2024-01-31     Matthew Smith  ...         Blue Cross   18856.281306          328          Urgent     2024-02-02  Paracetamol        Normal
+1   LesLie TErRy   62    Male         A+           Obesity        2019-08-20   Samantha Davies  ...           Medicare   33643.327287          265       Emergency     2019-08-26    Ibuprofen  Inconclusive
+2    DaNnY sMitH   76  Female         A-           Obesity        2022-09-22  Tiffany Mitchell  ...              Aetna   27955.096079          205       Emergency     2022-10-07      Aspirin        Normal
+3   andrEw waTtS   28  Female         O+          Diabetes        2020-11-18       Kevin Wells  ...           Medicare   37909.782410          450        Elective     2020-12-18    Ibuprofen      Abnormal
+4  adrIENNE bEll   43  Female        AB+            Cancer        2022-09-19    Kathleen Hanna  ...              Aetna   14238.317814          458          Urgent     2022-10-09   Penicillin      Abnormal
+
+[5 rows x 15 columns]
+2025-06-26 15:23:55,167 - INFO - DataFrame info:
+None
+2025-06-26 15:34:59,578 - INFO - Successfully loaded the CSV file: /Users/alexandre/Documents/Learning/cours_2025/OC/Projet_5/scripts/../data/healthcare_dataset.csv
+2025-06-26 15:34:59,584 - INFO - DataFrame preview:
+            Name  Age  Gender Blood Type Medical Condition Date of Admission            Doctor  ... Insurance Provider Billing Amount  Room Number  Admission Type Discharge Date   Medication  Test Results
+0  Bobby JacksOn   30    Male         B-            Cancer        2024-01-31     Matthew Smith  ...         Blue Cross   18856.281306          328          Urgent     2024-02-02  Paracetamol        Normal
+1   LesLie TErRy   62    Male         A+           Obesity        2019-08-20   Samantha Davies  ...           Medicare   33643.327287          265       Emergency     2019-08-26    Ibuprofen  Inconclusive
+2    DaNnY sMitH   76  Female         A-           Obesity        2022-09-22  Tiffany Mitchell  ...              Aetna   27955.096079          205       Emergency     2022-10-07      Aspirin        Normal
+3   andrEw waTtS   28  Female         O+          Diabetes        2020-11-18       Kevin Wells  ...           Medicare   37909.782410          450        Elective     2020-12-18    Ibuprofen      Abnormal
+4  adrIENNE bEll   43  Female        AB+            Cancer        2022-09-19    Kathleen Hanna  ...              Aetna   14238.317814          458          Urgent     2022-10-09   Penicillin      Abnormal
+
+[5 rows x 15 columns]
+2025-06-26 15:34:59,601 - INFO - DataFrame info:
+None
+2025-06-26 15:34:59,670 - INFO - DataFrame description:
+               Name           Age Gender Blood Type Medical Condition Date of Admission  ... Billing Amount   Room Number Admission Type  Discharge Date  Medication Test Results
+count         55500  55500.000000  55500      55500             55500             55500  ...   55500.000000  55500.000000          55500           55500       55500        55500
+unique        49992           NaN      2          8                 6              1827  ...            NaN           NaN              3            1856           5            3
+top     DAvId muNoZ           NaN   Male         A-         Arthritis        2024-03-16  ...            NaN           NaN       Elective      2020-03-15     Lipitor     Abnormal
+freq              3           NaN  27774       6969              9308                50  ...            NaN           NaN          18655              53       11140        18627
+mean            NaN     51.539459    NaN        NaN               NaN               NaN  ...   25539.316097    301.134829            NaN             NaN         NaN          NaN
+std             NaN     19.602454    NaN        NaN               NaN               NaN  ...   14211.454431    115.243069            NaN             NaN         NaN          NaN
+min             NaN     13.000000    NaN        NaN               NaN               NaN  ...   -2008.492140    101.000000            NaN             NaN         NaN          NaN
+25%             NaN     35.000000    NaN        NaN               NaN               NaN  ...   13241.224652    202.000000            NaN             NaN         NaN          NaN
+50%             NaN     52.000000    NaN        NaN               NaN               NaN  ...   25538.069376    302.000000            NaN             NaN         NaN          NaN
+75%             NaN     68.000000    NaN        NaN               NaN               NaN  ...   37820.508436    401.000000            NaN             NaN         NaN          NaN
+max             NaN     89.000000    NaN        NaN               NaN               NaN  ...   52764.276736    500.000000            NaN             NaN         NaN          NaN
+
+[11 rows x 15 columns]
+2025-06-26 15:34:59,670 - INFO - Normalized column names: ['name', 'age', 'gender', 'blood_type', 'medical_condition', 'date_of_admission', 'doctor', 'hospital', 'insurance_provider', 'billing_amount', 'room_number', 'admission_type', 'discharge_date', 'medication', 'test_results']
+2025-06-26 15:34:59,684 - INFO - No missing values found in the DataFrame.
+2025-06-26 15:34:59,713 - WARNING - Duplicate rows found: 534
+2025-06-26 15:34:59,744 - INFO - Duplicate rows removed.
+2025-06-26 15:34:59,750 - INFO - Converted date_of_admission to datetime format.
+2025-06-26 15:34:59,755 - INFO - Converted discharge_date to datetime format.
+2025-06-26 15:34:59,768 - INFO - No missing values found after date conversion.
+2025-06-26 15:35:00,003 - INFO - Cleaned DataFrame saved to: /Users/alexandre/Documents/Learning/cours_2025/OC/Projet_5/scripts/../data/cleaned_healthcare_dataset.csv
+2025-06-26 15:35:00,003 - INFO - Data migration and cleaning completed successfully.
+2025-06-28 12:56:58,096 - ERROR - Failed to connect to MongoDB: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 5.0s, Topology Description: <TopologyDescription id: 685fe6950c062562ea45789f, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2025-06-28 13:01:06,759 - INFO - Connected to MongoDB successfully.
+2025-06-28 13:01:06,867 - INFO - Successfully loaded the cleaned CSV file: /app/scripts/../data/cleaned_healthcare_dataset.csv
+2025-06-28 13:03:32,857 - INFO - Connected to MongoDB successfully.
+2025-06-28 13:03:32,968 - INFO - Successfully loaded the cleaned CSV file: /app/scripts/../data/cleaned_healthcare_dataset.csv
+2025-06-28 13:05:24,279 - INFO - Connected to MongoDB successfully.
+2025-06-28 13:05:24,377 - INFO - Successfully loaded the cleaned CSV file: /app/scripts/../data/cleaned_healthcare_dataset.csv
+2025-06-28 13:05:25,059 - INFO - Inserted 54966 records into MongoDB.
+2025-06-28 13:05:25,208 - ERROR - Failed to create index: Index build failed: 32294c94-c7e6-43ec-9853-93439999b754: Collection healthcare_db.patients ( 29ecae07-5d4f-41fc-acc0-55166e4de1d4 ) :: caused by :: E11000 duplicate key error collection: healthcare_db.patients index: patient_id_1 dup key: { patient_id: null }, full error: {'ok': 0.0, 'errmsg': 'Index build failed: 32294c94-c7e6-43ec-9853-93439999b754: Collection healthcare_db.patients ( 29ecae07-5d4f-41fc-acc0-55166e4de1d4 ) :: caused by :: E11000 duplicate key error collection: healthcare_db.patients index: patient_id_1 dup key: { patient_id: null }', 'code': 11000, 'codeName': 'DuplicateKey', 'keyPattern': {'patient_id': 1}, 'keyValue': {'patient_id': None}}
+2025-06-28 13:23:53,883 - INFO - Connected to MongoDB successfully.
+2025-06-28 13:23:53,995 - INFO - Successfully loaded the cleaned CSV file: /app/scripts/../data/cleaned_healthcare_dataset.csv
+2025-06-28 13:23:54,707 - INFO - Inserted 54966 records into MongoDB.
+2025-06-28 13:23:54,754 - INFO - Total records in MongoDB collection: 109932
+2025-06-28 13:48:24,315 - INFO - Connected to MongoDB successfully.
+2025-06-28 13:48:24,422 - INFO - Successfully loaded the cleaned CSV file: /app/scripts/../data/cleaned_healthcare_dataset.csv
+2025-06-28 13:48:24,815 - INFO - Created unique index on 'patient_key' field.
+2025-06-28 13:48:25,353 - ERROR - Bulk write error: {'writeErrors': [{'index': 50000, 'code': 11000, 'errmsg': 'E11000 duplicate key error collection: healthcare_db.patients index: patient_key_1 dup key: { patient_key: "KRISTa GiBsoN_2022-05-05_and Cooper Soto Mccullough," }', 'keyPattern': {'patient_key': 1}, 'keyValue': {'patient_key': 'KRISTa GiBsoN_2022-05-05_and Cooper Soto Mccullough,'}, 'op': {'name': 'KRISTa GiBsoN', 'age': 24, 'gender': 'Male', 'blood_type': 'A+', 'medical_condition': 'Diabetes', 'date_of_admission': datetime.datetime(2022, 5, 5, 0, 0), 'doctor': 'Alexandra Gould', 'hospital': 'and Cooper Soto Mccullough,', 'insurance_provider': 'Aetna', 'billing_amount': 6364.482520713409, 'room_number': 230, 'admission_type': 'Urgent', 'discharge_date': datetime.datetime(2022, 5, 16, 0, 0), 'medication': 'Lipitor', 'test_results': 'Inconclusive', 'patient_key': 'KRISTa GiBsoN_2022-05-05_and Cooper Soto Mccullough,', '_id': ObjectId('685ff2a89ef3c8eacaba5a89')}}], 'writeConcernErrors': [], 'nInserted': 50000, 'nUpserted': 0, 'nMatched': 0, 'nModified': 0, 'nRemoved': 0, 'upserted': []}
+2025-06-28 15:56:15,620 - INFO - Successfully loaded the CSV file: /Users/alexandre/Documents/Learning/cours_2025/OC/Projet_5/scripts/../data/healthcare_dataset.csv
+2025-06-28 15:56:15,628 - INFO - DataFrame preview:
+            Name  Age  Gender Blood Type Medical Condition  ... Room Number Admission Type Discharge Date   Medication  Test Results
+0  Bobby JacksOn   30    Male         B-            Cancer  ...         328         Urgent     2024-02-02  Paracetamol        Normal
+1   LesLie TErRy   62    Male         A+           Obesity  ...         265      Emergency     2019-08-26    Ibuprofen  Inconclusive
+2    DaNnY sMitH   76  Female         A-           Obesity  ...         205      Emergency     2022-10-07      Aspirin        Normal
+3   andrEw waTtS   28  Female         O+          Diabetes  ...         450       Elective     2020-12-18    Ibuprofen      Abnormal
+4  adrIENNE bEll   43  Female        AB+            Cancer  ...         458         Urgent     2022-10-09   Penicillin      Abnormal
+
+[5 rows x 15 columns]
+2025-06-28 15:56:15,646 - INFO - DataFrame info:
+None
+2025-06-28 15:56:15,712 - INFO - DataFrame description:
+               Name           Age Gender Blood Type Medical Condition  ...   Room Number Admission Type Discharge Date Medication  Test Results
+count         55500  55500.000000  55500      55500             55500  ...  55500.000000          55500          55500      55500         55500
+unique        49992           NaN      2          8                 6  ...           NaN              3           1856          5             3
+top     DAvId muNoZ           NaN   Male         A-         Arthritis  ...           NaN       Elective     2020-03-15    Lipitor      Abnormal
+freq              3           NaN  27774       6969              9308  ...           NaN          18655             53      11140         18627
+mean            NaN     51.539459    NaN        NaN               NaN  ...    301.134829            NaN            NaN        NaN           NaN
+std             NaN     19.602454    NaN        NaN               NaN  ...    115.243069            NaN            NaN        NaN           NaN
+min             NaN     13.000000    NaN        NaN               NaN  ...    101.000000            NaN            NaN        NaN           NaN
+25%             NaN     35.000000    NaN        NaN               NaN  ...    202.000000            NaN            NaN        NaN           NaN
+50%             NaN     52.000000    NaN        NaN               NaN  ...    302.000000            NaN            NaN        NaN           NaN
+75%             NaN     68.000000    NaN        NaN               NaN  ...    401.000000            NaN            NaN        NaN           NaN
+max             NaN     89.000000    NaN        NaN               NaN  ...    500.000000            NaN            NaN        NaN           NaN
+
+[11 rows x 15 columns]
+2025-06-28 15:56:15,713 - INFO - Normalized column names: ['name', 'age', 'gender', 'blood_type', 'medical_condition', 'date_of_admission', 'doctor', 'hospital', 'insurance_provider', 'billing_amount', 'room_number', 'admission_type', 'discharge_date', 'medication', 'test_results']
+2025-06-28 15:56:15,849 - INFO - All string values in the DataFrame were lowercased and spaces replaced with underscores.
+2025-06-28 15:56:15,862 - INFO - No missing values found in the DataFrame.
+2025-06-28 15:56:15,891 - WARNING - Duplicate rows found: 534
+2025-06-28 15:56:15,923 - INFO - Duplicate rows removed.
+2025-06-28 15:56:15,930 - INFO - Converted date_of_admission to datetime format.
+2025-06-28 15:56:15,936 - INFO - Converted discharge_date to datetime format.
+2025-06-28 15:56:15,947 - INFO - No missing values after date conversion.
+2025-06-28 15:56:15,975 - INFO - Successfully created the patient_key column for unique identification.
+2025-06-28 15:56:16,216 - INFO - Cleaned data saved to: /Users/alexandre/Documents/Learning/cours_2025/OC/Projet_5/scripts/../data/cleaned_healthcare_dataset.csv
+2025-06-28 15:56:16,216 - INFO - Data cleaning process finished successfully.
+2025-06-28 14:01:29,342 - INFO - Connected to MongoDB successfully.
+2025-06-28 14:01:29,477 - INFO - Successfully loaded the cleaned CSV file: /app/scripts/../data/cleaned_healthcare_dataset.csv
+2025-06-28 14:01:29,847 - INFO - Created unique index on 'patient_key' field.
+2025-06-28 14:01:30,359 - ERROR - Bulk write error: {'writeErrors': [{'index': 50000, 'code': 11000, 'errmsg': 'E11000 duplicate key error collection: healthcare_db.patients index: patient_key_1 dup key: { patient_key: "krista_gibson_2022-05-05_and_cooper_soto_mccullough," }', 'keyPattern': {'patient_key': 1}, 'keyValue': {'patient_key': 'krista_gibson_2022-05-05_and_cooper_soto_mccullough,'}, 'op': {'name': 'krista_gibson', 'age': 24, 'gender': 'male', 'blood_type': 'a+', 'medical_condition': 'diabetes', 'date_of_admission': datetime.datetime(2022, 5, 5, 0, 0), 'doctor': 'alexandra_gould', 'hospital': 'and_cooper_soto_mccullough,', 'insurance_provider': 'aetna', 'billing_amount': 6364.482520713409, 'room_number': 230, 'admission_type': 'urgent', 'discharge_date': datetime.datetime(2022, 5, 16, 0, 0), 'medication': 'lipitor', 'test_results': 'inconclusive', 'patient_key': 'krista_gibson_2022-05-05_and_cooper_soto_mccullough,', '_id': ObjectId('685ff5b97e1e26030d4aa9b2')}}], 'writeConcernErrors': [], 'nInserted': 50000, 'nUpserted': 0, 'nMatched': 0, 'nModified': 0, 'nRemoved': 0, 'upserted': []}
+2025-06-28 16:05:58,397 - INFO - Successfully loaded the CSV file: /Users/alexandre/Documents/Learning/cours_2025/OC/Projet_5/scripts/../data/healthcare_dataset.csv
+2025-06-28 16:05:58,403 - INFO - DataFrame preview:
+            Name  Age  Gender Blood Type Medical Condition Date of Admission            Doctor  ... Insurance Provider Billing Amount  Room Number  Admission Type Discharge Date   Medication  Test Results
+0  Bobby JacksOn   30    Male         B-            Cancer        2024-01-31     Matthew Smith  ...         Blue Cross   18856.281306          328          Urgent     2024-02-02  Paracetamol        Normal
+1   LesLie TErRy   62    Male         A+           Obesity        2019-08-20   Samantha Davies  ...           Medicare   33643.327287          265       Emergency     2019-08-26    Ibuprofen  Inconclusive
+2    DaNnY sMitH   76  Female         A-           Obesity        2022-09-22  Tiffany Mitchell  ...              Aetna   27955.096079          205       Emergency     2022-10-07      Aspirin        Normal
+3   andrEw waTtS   28  Female         O+          Diabetes        2020-11-18       Kevin Wells  ...           Medicare   37909.782410          450        Elective     2020-12-18    Ibuprofen      Abnormal
+4  adrIENNE bEll   43  Female        AB+            Cancer        2022-09-19    Kathleen Hanna  ...              Aetna   14238.317814          458          Urgent     2022-10-09   Penicillin      Abnormal
+
+[5 rows x 15 columns]
+2025-06-28 16:05:58,418 - INFO - DataFrame info:
+None
+2025-06-28 16:05:58,481 - INFO - DataFrame description:
+               Name           Age Gender Blood Type Medical Condition Date of Admission  ... Billing Amount   Room Number Admission Type  Discharge Date  Medication Test Results
+count         55500  55500.000000  55500      55500             55500             55500  ...   55500.000000  55500.000000          55500           55500       55500        55500
+unique        49992           NaN      2          8                 6              1827  ...            NaN           NaN              3            1856           5            3
+top     DAvId muNoZ           NaN   Male         A-         Arthritis        2024-03-16  ...            NaN           NaN       Elective      2020-03-15     Lipitor     Abnormal
+freq              3           NaN  27774       6969              9308                50  ...            NaN           NaN          18655              53       11140        18627
+mean            NaN     51.539459    NaN        NaN               NaN               NaN  ...   25539.316097    301.134829            NaN             NaN         NaN          NaN
+std             NaN     19.602454    NaN        NaN               NaN               NaN  ...   14211.454431    115.243069            NaN             NaN         NaN          NaN
+min             NaN     13.000000    NaN        NaN               NaN               NaN  ...   -2008.492140    101.000000            NaN             NaN         NaN          NaN
+25%             NaN     35.000000    NaN        NaN               NaN               NaN  ...   13241.224652    202.000000            NaN             NaN         NaN          NaN
+50%             NaN     52.000000    NaN        NaN               NaN               NaN  ...   25538.069376    302.000000            NaN             NaN         NaN          NaN
+75%             NaN     68.000000    NaN        NaN               NaN               NaN  ...   37820.508436    401.000000            NaN             NaN         NaN          NaN
+max             NaN     89.000000    NaN        NaN               NaN               NaN  ...   52764.276736    500.000000            NaN             NaN         NaN          NaN
+
+[11 rows x 15 columns]
+2025-06-28 16:05:58,482 - INFO - Normalized column names: ['name', 'age', 'gender', 'blood_type', 'medical_condition', 'date_of_admission', 'doctor', 'hospital', 'insurance_provider', 'billing_amount', 'room_number', 'admission_type', 'discharge_date', 'medication', 'test_results']
+2025-06-28 16:05:58,829 - INFO - Normalized all string values across the DataFrame.
+2025-06-28 16:05:58,845 - INFO - No missing values found.
+2025-06-28 16:05:58,873 - WARNING - Duplicate rows found: 534
+2025-06-28 16:05:58,904 - INFO - Duplicate rows removed.
+2025-06-28 16:05:58,910 - INFO - Converted column 'date_of_admission' to datetime format.
+2025-06-28 16:05:58,915 - INFO - Converted column 'discharge_date' to datetime format.
+2025-06-28 16:05:58,927 - INFO - No missing values after date conversion.
+2025-06-28 16:05:58,993 - INFO - Created 'patient_key' field successfully.
+2025-06-28 16:05:59,232 - INFO - Cleaned DataFrame saved to: /Users/alexandre/Documents/Learning/cours_2025/OC/Projet_5/scripts/../data/cleaned_healthcare_dataset.csv
+2025-06-28 16:05:59,232 - INFO - Data cleaning process completed successfully.
+2025-06-28 14:06:22,107 - INFO - Connected to MongoDB successfully.
+2025-06-28 14:06:22,243 - INFO - Successfully loaded the cleaned CSV file: /app/scripts/../data/cleaned_healthcare_dataset.csv
+2025-06-28 14:06:22,610 - INFO - Created unique index on 'patient_key' field.
+2025-06-28 14:06:23,156 - ERROR - Bulk write error: {'writeErrors': [{'index': 50000, 'code': 11000, 'errmsg': 'E11000 duplicate key error collection: healthcare_db.patients index: patient_key_1 dup key: { patient_key: "krista_gibson_2022-05-05_and_cooper_soto_mccullough" }', 'keyPattern': {'patient_key': 1}, 'keyValue': {'patient_key': 'krista_gibson_2022-05-05_and_cooper_soto_mccullough'}, 'op': {'name': 'krista_gibson', 'age': 24, 'gender': 'male', 'blood_type': 'a+', 'medical_condition': 'diabetes', 'date_of_admission': datetime.datetime(2022, 5, 5, 0, 0), 'doctor': 'alexandra_gould', 'hospital': 'and_cooper_soto_mccullough', 'insurance_provider': 'aetna', 'billing_amount': 6364.482520713409, 'room_number': 230, 'admission_type': 'urgent', 'discharge_date': datetime.datetime(2022, 5, 16, 0, 0), 'medication': 'lipitor', 'test_results': 'inconclusive', 'patient_key': 'krista_gibson_2022-05-05_and_cooper_soto_mccullough', '_id': ObjectId('685ff6de6ce6fe95ec086573')}}], 'writeConcernErrors': [], 'nInserted': 50000, 'nUpserted': 0, 'nMatched': 0, 'nModified': 0, 'nRemoved': 0, 'upserted': []}
+2025-06-28 16:08:51,313 - INFO - Successfully loaded the CSV file: /Users/alexandre/Documents/Learning/cours_2025/OC/Projet_5/scripts/../data/healthcare_dataset.csv
+2025-06-28 16:08:51,318 - INFO - DataFrame preview:
+            Name  Age  Gender Blood Type Medical Condition Date of Admission            Doctor  ... Insurance Provider Billing Amount  Room Number  Admission Type Discharge Date   Medication  Test Results
+0  Bobby JacksOn   30    Male         B-            Cancer        2024-01-31     Matthew Smith  ...         Blue Cross   18856.281306          328          Urgent     2024-02-02  Paracetamol        Normal
+1   LesLie TErRy   62    Male         A+           Obesity        2019-08-20   Samantha Davies  ...           Medicare   33643.327287          265       Emergency     2019-08-26    Ibuprofen  Inconclusive
+2    DaNnY sMitH   76  Female         A-           Obesity        2022-09-22  Tiffany Mitchell  ...              Aetna   27955.096079          205       Emergency     2022-10-07      Aspirin        Normal
+3   andrEw waTtS   28  Female         O+          Diabetes        2020-11-18       Kevin Wells  ...           Medicare   37909.782410          450        Elective     2020-12-18    Ibuprofen      Abnormal
+4  adrIENNE bEll   43  Female        AB+            Cancer        2022-09-19    Kathleen Hanna  ...              Aetna   14238.317814          458          Urgent     2022-10-09   Penicillin      Abnormal
+
+[5 rows x 15 columns]
+2025-06-28 16:08:51,334 - INFO - DataFrame info:
+None
+2025-06-28 16:08:51,398 - INFO - DataFrame description:
+               Name           Age Gender Blood Type Medical Condition Date of Admission  ... Billing Amount   Room Number Admission Type  Discharge Date  Medication Test Results
+count         55500  55500.000000  55500      55500             55500             55500  ...   55500.000000  55500.000000          55500           55500       55500        55500
+unique        49992           NaN      2          8                 6              1827  ...            NaN           NaN              3            1856           5            3
+top     DAvId muNoZ           NaN   Male         A-         Arthritis        2024-03-16  ...            NaN           NaN       Elective      2020-03-15     Lipitor     Abnormal
+freq              3           NaN  27774       6969              9308                50  ...            NaN           NaN          18655              53       11140        18627
+mean            NaN     51.539459    NaN        NaN               NaN               NaN  ...   25539.316097    301.134829            NaN             NaN         NaN          NaN
+std             NaN     19.602454    NaN        NaN               NaN               NaN  ...   14211.454431    115.243069            NaN             NaN         NaN          NaN
+min             NaN     13.000000    NaN        NaN               NaN               NaN  ...   -2008.492140    101.000000            NaN             NaN         NaN          NaN
+25%             NaN     35.000000    NaN        NaN               NaN               NaN  ...   13241.224652    202.000000            NaN             NaN         NaN          NaN
+50%             NaN     52.000000    NaN        NaN               NaN               NaN  ...   25538.069376    302.000000            NaN             NaN         NaN          NaN
+75%             NaN     68.000000    NaN        NaN               NaN               NaN  ...   37820.508436    401.000000            NaN             NaN         NaN          NaN
+max             NaN     89.000000    NaN        NaN               NaN               NaN  ...   52764.276736    500.000000            NaN             NaN         NaN          NaN
+
+[11 rows x 15 columns]
+2025-06-28 16:08:51,398 - INFO - Normalized column names: ['name', 'age', 'gender', 'blood_type', 'medical_condition', 'date_of_admission', 'doctor', 'hospital', 'insurance_provider', 'billing_amount', 'room_number', 'admission_type', 'discharge_date', 'medication', 'test_results']
+2025-06-28 16:08:51,749 - INFO - Normalized all string values across the DataFrame.
+2025-06-28 16:08:51,765 - INFO - No missing values found.
+2025-06-28 16:08:51,793 - WARNING - Duplicate rows found: 534
+2025-06-28 16:08:51,824 - INFO - Duplicate rows removed.
+2025-06-28 16:08:51,830 - INFO - Converted column 'date_of_admission' to datetime format.
+2025-06-28 16:08:51,835 - INFO - Converted column 'discharge_date' to datetime format.
+2025-06-28 16:08:51,847 - INFO - No missing values after date conversion.
+2025-06-28 16:08:51,915 - INFO - Created 'patient_key' field successfully.
+2025-06-28 16:08:52,153 - INFO - Cleaned DataFrame saved to: /Users/alexandre/Documents/Learning/cours_2025/OC/Projet_5/scripts/../data/cleaned_healthcare_dataset.csv
+2025-06-28 16:08:52,153 - INFO - Data cleaning process completed successfully.
+2025-06-28 16:10:01,662 - INFO - Successfully loaded the CSV file: /Users/alexandre/Documents/Learning/cours_2025/OC/Projet_5/scripts/../data/healthcare_dataset.csv
+2025-06-28 16:10:01,667 - INFO - DataFrame preview:
+            Name  Age  Gender Blood Type Medical Condition Date of Admission            Doctor  ... Insurance Provider Billing Amount  Room Number  Admission Type Discharge Date   Medication  Test Results
+0  Bobby JacksOn   30    Male         B-            Cancer        2024-01-31     Matthew Smith  ...         Blue Cross   18856.281306          328          Urgent     2024-02-02  Paracetamol        Normal
+1   LesLie TErRy   62    Male         A+           Obesity        2019-08-20   Samantha Davies  ...           Medicare   33643.327287          265       Emergency     2019-08-26    Ibuprofen  Inconclusive
+2    DaNnY sMitH   76  Female         A-           Obesity        2022-09-22  Tiffany Mitchell  ...              Aetna   27955.096079          205       Emergency     2022-10-07      Aspirin        Normal
+3   andrEw waTtS   28  Female         O+          Diabetes        2020-11-18       Kevin Wells  ...           Medicare   37909.782410          450        Elective     2020-12-18    Ibuprofen      Abnormal
+4  adrIENNE bEll   43  Female        AB+            Cancer        2022-09-19    Kathleen Hanna  ...              Aetna   14238.317814          458          Urgent     2022-10-09   Penicillin      Abnormal
+
+[5 rows x 15 columns]
+2025-06-28 16:10:01,683 - INFO - DataFrame info:
+None
+2025-06-28 16:10:01,747 - INFO - DataFrame description:
+               Name           Age Gender Blood Type Medical Condition Date of Admission  ... Billing Amount   Room Number Admission Type  Discharge Date  Medication Test Results
+count         55500  55500.000000  55500      55500             55500             55500  ...   55500.000000  55500.000000          55500           55500       55500        55500
+unique        49992           NaN      2          8                 6              1827  ...            NaN           NaN              3            1856           5            3
+top     DAvId muNoZ           NaN   Male         A-         Arthritis        2024-03-16  ...            NaN           NaN       Elective      2020-03-15     Lipitor     Abnormal
+freq              3           NaN  27774       6969              9308                50  ...            NaN           NaN          18655              53       11140        18627
+mean            NaN     51.539459    NaN        NaN               NaN               NaN  ...   25539.316097    301.134829            NaN             NaN         NaN          NaN
+std             NaN     19.602454    NaN        NaN               NaN               NaN  ...   14211.454431    115.243069            NaN             NaN         NaN          NaN
+min             NaN     13.000000    NaN        NaN               NaN               NaN  ...   -2008.492140    101.000000            NaN             NaN         NaN          NaN
+25%             NaN     35.000000    NaN        NaN               NaN               NaN  ...   13241.224652    202.000000            NaN             NaN         NaN          NaN
+50%             NaN     52.000000    NaN        NaN               NaN               NaN  ...   25538.069376    302.000000            NaN             NaN         NaN          NaN
+75%             NaN     68.000000    NaN        NaN               NaN               NaN  ...   37820.508436    401.000000            NaN             NaN         NaN          NaN
+max             NaN     89.000000    NaN        NaN               NaN               NaN  ...   52764.276736    500.000000            NaN             NaN         NaN          NaN
+
+[11 rows x 15 columns]
+2025-06-28 16:10:01,747 - INFO - Normalized column names: ['name', 'age', 'gender', 'blood_type', 'medical_condition', 'date_of_admission', 'doctor', 'hospital', 'insurance_provider', 'billing_amount', 'room_number', 'admission_type', 'discharge_date', 'medication', 'test_results']
+2025-06-28 16:10:02,097 - INFO - Normalized all string values across the DataFrame.
+2025-06-28 16:10:02,113 - INFO - No missing values found.
+2025-06-28 16:10:02,140 - WARNING - Duplicate rows found: 534
+2025-06-28 16:10:02,171 - INFO - Duplicate rows removed.
+2025-06-28 16:10:02,177 - INFO - Converted column 'date_of_admission' to datetime format.
+2025-06-28 16:10:02,183 - INFO - Converted column 'discharge_date' to datetime format.
+2025-06-28 16:10:02,195 - INFO - No missing values after date conversion.
+2025-06-28 16:10:02,262 - INFO - Created 'patient_key' field successfully.
+2025-06-28 16:10:02,265 - WARNING - Duplicate patient_key values found: 4966
+2025-06-28 16:10:02,271 - INFO - Duplicate patient_key entries removed.
+2025-06-28 16:10:02,493 - INFO - Cleaned DataFrame saved to: /Users/alexandre/Documents/Learning/cours_2025/OC/Projet_5/scripts/../data/cleaned_healthcare_dataset.csv
+2025-06-28 16:10:02,493 - INFO - Data cleaning process completed successfully.
+2025-06-28 14:10:39,082 - INFO - Connected to MongoDB successfully.
+2025-06-28 14:10:39,210 - INFO - Successfully loaded the cleaned CSV file: /app/scripts/../data/cleaned_healthcare_dataset.csv
+2025-06-28 14:10:39,529 - INFO - Created unique index on 'patient_key' field.
+2025-06-28 14:10:40,079 - INFO - Inserted 50000 records into MongoDB.
+2025-06-28 14:10:40,096 - INFO - Total records in MongoDB collection: 50000
