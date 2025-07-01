@@ -18,60 +18,73 @@ logging.basicConfig(                                                      # Logg
     format='%(asctime)s - %(levelname)s - %(message)s'                    # Log format
 )
 
-# 4. Define path to cleaned CSV file
-data_file_path = os.path.join(BASE_DIR, '..', 'data', 'cleaned_healthcare_dataset.csv')  # Path to the cleaned CSV
+# 4. Define a function to connect to MongoDB
+def connect_to_mongodb(uri_env_key='ADMIN_URI', db_name='healthcare_db', collection_name='patients', timeout_ms=5000):
+    mongo_uri = os.getenv(uri_env_key)                                                # Get URI from environment
+    if not mongo_uri:                                                                 # Check if URI exists
+        logging.error(f"Environment variable '{uri_env_key}' not found.")             # Log error
+        raise EnvironmentError(f"Missing environment variable: {uri_env_key}")        # Raise error if missing
+    try:
+        client = MongoClient(mongo_uri, serverSelectionTimeoutMS=timeout_ms)         # Create client with timeout
+        client.admin.command('ping')                                                  # Ping to test connection
+        logging.info(f"Connected to MongoDB using {uri_env_key}.")                    # Log success
+        db = client[db_name]                                                          # Get database
+        collection = db[collection_name]                                              # Get collection
+        logging.info(f"Using collection '{collection_name}' in DB '{db_name}'.")      # Log details
+        return collection                                                             # Return collection object
+    except errors.ConnectionFailure as e:                                             # Handle connection error
+        logging.error(f"MongoDB connection failed: {e}")                              # Log failure
+        raise                                                                          # Raise to stop script
 
-# 5. Connect to MongoDB
-try:
-    mongo_uri = os.getenv('ADMIN_URI')       # Get the MongoDB URI from environment or fallback
-    client = MongoClient(mongo_uri, serverSelectionTimeoutMS=5000)         # Connect with a timeout
-    client.admin.command('ping')                                           # Simple ping to ensure Mongo is reachable
-    db = client['healthcare_db']                                           # Access the database
-    collection = db['patients']                                            # Access (or create) the collection
-    logging.info("Connected to MongoDB successfully.")                     # Log connection success
-except errors.ConnectionFailure as e:
-    logging.error(f"Failed to connect to MongoDB: {e}")                    # Log failure
-    raise                                                                  # Raise the error to stop the script
+# 5. Get MongoDB collection via function
+collection = connect_to_mongodb()  # Uses defaults: ADMIN_URI, healthcare_db, patients
 
 # 6. Load the cleaned CSV file into a DataFrame
 try:
-    df = pd.read_csv(data_file_path)                                       # Load the cleaned CSV
-    logging.info(f"Successfully loaded the cleaned CSV file: {data_file_path}")  # Log success
-except FileNotFoundError as e:
-    logging.error(f"File not found: {data_file_path}")                     # Log if the file is missing
-    raise
+    data_file_path = os.path.join(BASE_DIR, '..', 'data', 'cleaned_healthcare_dataset.csv')  # Path to cleaned data
+    df = pd.read_csv(data_file_path)                                                         # Load CSV
+    logging.info(f"Successfully loaded the cleaned CSV file: {data_file_path}")              # Log success
+except FileNotFoundError:
+    logging.error(f"File not found: {data_file_path}")                                       # Log error
+    raise                                                                                     # Raise if file missing
 
 # 7. Convert date columns to datetime format
-date_columns = ['date_of_admission', 'discharge_date']      # List of date fields to convert
+date_columns = ['date_of_admission', 'discharge_date']                # Define date columns
 for col in date_columns:
-    df[col] = pd.to_datetime(df[col], errors='coerce')                     # Convert each date column, invalids become NaT
+    df[col] = pd.to_datetime(df[col], errors='coerce')               # Convert to datetime or NaT
 
 # 8. Transform the DataFrame to a list of dictionaries
-records = df.to_dict(orient='records')                                     # Convert DataFrame to list of JSON-style dictionaries
+records = df.to_dict(orient='records')                                # Convert DataFrame to list of dicts
 
 # 9. Ensure MongoDB understands the date format
 for doc in records:
     for col in date_columns:
-        if col in doc and isinstance(doc[col], pd.Timestamp):              # Check if value is a pandas datetime
-            doc[col] = doc[col].to_pydatetime()                            # Convert pandas datetime to Python datetime
+        if col in doc and isinstance(doc[col], pd.Timestamp):         # Check type
+            doc[col] = doc[col].to_pydatetime()                       # Convert to Python datetime
 
-# 9bis. Créer un index unique sur le champ patient_key pour éviter les doublons
+# 9bis. Create unique index on patient_key
 try:
-    collection.create_index('patient_key', unique=True)
-    logging.info("Created unique index on 'patient_key' field.")
+    collection.create_index('patient_key', unique=True)              # Create unique index
+    logging.info("Created unique index on 'patient_key' field.")     # Log success
 except errors.OperationFailure as e:
-    logging.error(f"Failed to create unique index: {e}")
-    raise
+    logging.error(f"Failed to create unique index: {e}")             # Log failure
 
 # 10. Insert records into MongoDB
 try:
-    result = collection.insert_many(records)                               # Bulk insert all records
-    logging.info(f'Inserted {len(result.inserted_ids)} records into MongoDB.')  # Log the number of inserted records
+    result = collection.insert_many(records)                          # Bulk insert
+    logging.info(f'Inserted {len(result.inserted_ids)} records into MongoDB.')  # Log insert count
 except errors.BulkWriteError as e:
-    logging.error(f"Bulk write error: {e.details}")                        # Log any insertion error
-    raise
+    logging.error(f"Bulk write error: {e.details}")                   # Log detailed error
 
 # 11. Final verification
-count = collection.count_documents({})                                    # Count documents in the collection
-print(f"Total records in MongoDB collection: {count}")                    # Show confirmation to the user
-logging.info(f"Total records in MongoDB collection: {count}")             # Log the total count
+count = collection.count_documents({})                                # Count all docs
+print(f"Total records in MongoDB collection: {count}")                # Print result
+logging.info(f"Total records in MongoDB collection: {count}")         # Log result
+
+# 12. Keep script running to prevent Docker container exit
+try:
+    while True:
+        pass  # Infinite loop to hold process
+except KeyboardInterrupt:
+    logging.info("Migration script terminated by user.")              # Log interrupt
+    print("Migration script terminated by user.")                     # Console message

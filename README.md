@@ -58,9 +58,23 @@ PROJET_5/
 - Exports the cleaned dataset as `data/cleaned_healthcare_dataset.csv`.
 
 ### 2. MongoDB Setup
-- `mongodb/mongo_init.js`: Creates roles and users (admin, engineer, analyst).
-- `mongodb/mongod.conf`: MongoDB configuration (network, security).
-- `.env`: Stores **secure URIs** for role-based access (not committed to Git).
+- a. Role-based Access Control (RBAC)
+MongoDB is configured with three distinct roles, created automatically at container startup using mongo_init.js:
+Role	Purpose	Permissions
+admin	Full control	readWriteAnyDatabase, dbAdminAnyDatabase, userAdminAnyDatabase
+engineer	Data ingestion + modification	readWrite on healthcare_db
+analyst	Read-only access	read on healthcare_db
+
+- b. Initialization script
+Located in: mongodb/mongo_init.js
+It creates:
+The roles
+Users with passwords
+Assigns them to the healthcare_db database
+
+- c. Configuration
+mongod.conf: configures network access, disables telemetry, allows external connections
+.env: stores all connection URIs (ADMIN_URI, ENGINEER_URI, ANALYST_URI) securely
 
 ### 3. Docker and Orchestration
 - `docker/Dockerfile`: Python runtime with MongoDB client tools.
