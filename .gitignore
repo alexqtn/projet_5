@@ -4,15 +4,18 @@ __pycache__/
 *.pyc
 
 # Ignore Jupyter Notebook checkpoints
-.ipynb_checkpoints/
+*.ipynb_checkpoints/
 
 # Ignore sensitive files
-.env
+*.env
 logs/
 *.log
 
 # Ignore system files
-.DS_Store
+*.DS_Store
 
 # Ignore P5 evaluation file
-.p5_fiche_evaluation.pdf
+*.p5_fiche_evaluation.pdf
+
+# Ignore P5 evaluation file
+*.PresentationMigration.pptx
