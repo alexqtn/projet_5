@@ -14,5 +14,5 @@ logs/
 # Ignore system files
 *.DS_Store
 
-# Ignore P5 evaluation file
-*.p5_fiche_evaluation.pdf
+# Ignore P5 folder presentation
+*.Presentation/
